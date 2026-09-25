@@ -3,8 +3,8 @@ typedef struct ListNodeStruct {
   struct ListNodeStruct *next;
 } ListNode;
 
-typedef int (* ComparisonFunction)(void *, void *, void *);
-typedef void (* PrintFunction)(void *);
+typedef int (*ComparisonFunction)(void *, void *, int *);
+typedef void (*PrintFunction)(void *);
 
 int insertItem(ListNode **list, void *data, ComparisonFunction compare);
 

@@ -1,6 +1,4 @@
 #include "book.jliotta.h"
-#include <errno.h>
-#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -122,12 +120,13 @@ int numAuthors(Book *book, int *result) {
   return 0;
 }
 
-int printBook(Book *b) {
+void printBook(void *b) {
   if (b == NULL)
-    return 1;
+    return;
 
+  Book *book = (Book *)b;
   char *genre;
-  switch (b->genre) {
+  switch (book->genre) {
   case GENRE_FICTION:
     genre = "fiction";
     break;
@@ -139,16 +138,14 @@ int printBook(Book *b) {
     break;
   }
 
-  printf("\"%s\" (", b->title);
+  printf("\"%s\" (", book->title);
 
-  if (strlen(b->author2) > 0)
-    printf("%s and %s", b->author, b->author2);
+  if (strlen(book->author2) > 0)
+    printf("%s and %s", book->author, book->author2);
   else
-    printf("%s", b->author);
+    printf("%s", book->author);
 
-  printf("), %d, %s, %.2f\n", b->year, genre, b->rating);
-
-  return 0;
+  printf("), %d, %s, %.2f\n", book->year, genre, book->rating);
 }
 
 char *skipFirst(char *title) {
@@ -185,7 +182,6 @@ int initializeBookFromStrings(Book *book, char **stringArray) {
   if (strcmp(author2, "") == 0)
     author2 = NULL;
 
-
   int year = atoi(stringArray[3]);
 
   BookGenre genre;
@@ -202,5 +198,4 @@ int initializeBookFromStrings(Book *book, char **stringArray) {
   float rating = atof(stringArray[5]);
 
   return initializeBook(book, title, author, author2, (int)year, genre, rating);
-
 }

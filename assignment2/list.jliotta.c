@@ -1,5 +1,4 @@
 #include "list.jliotta.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 int initNode(ListNode **node, void *data) {

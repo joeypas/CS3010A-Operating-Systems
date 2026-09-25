@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main(void) {
   ListNode *list = NULL;
   Book theStrangerBook;
 
