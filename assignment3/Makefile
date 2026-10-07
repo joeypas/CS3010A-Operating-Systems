@@ -1,9 +1,11 @@
 CC := clang
-CFLAGS := -Wall -Wextra -Wpedantic -Wnull-dereference -fsanitize=address,undefined -g
-LDFLAGS := -fsanitize=address,undefined
 
 SRC_DIR := src
+INCLUDE_DIR := include
 BUILD_DIR := build
+
+CFLAGS := -Wall -Wextra -Wpedantic -Wnull-dereference -fsanitize=address,undefined -g -I $(INCLUDE_DIR)
+LDFLAGS := -fsanitize=address,undefined
 
 TARGET := $(BUILD_DIR)/assignment3
 
