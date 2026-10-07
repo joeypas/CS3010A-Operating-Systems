@@ -5,7 +5,7 @@ LDFLAGS := -fsanitize=address,undefined
 SRC_DIR := src
 BUILD_DIR := build
 
-TARGET := $(BUILD_DIR)/assignment2
+TARGET := $(BUILD_DIR)/assignment3
 
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
